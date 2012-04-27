@@ -40,6 +40,7 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 group :development, :test do
+  gem 'therubyracer'
   gem 'rspec-rails'
 end
 
