@@ -30,6 +30,9 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+group :production do
+  gem 'thin'
+end
 
 # Deploy with Capistrano
 # gem 'capistrano'
