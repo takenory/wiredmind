@@ -1,5 +1,5 @@
 <ul id="canvas_list">
   <% @canvas.each do |canvas| %>
-    <li><%= link_to canvas.name, canvas_path(canvas) %></li>
+    <li><%= link_to canvas.name, canvas_show_path(canvas) %></li>
   <% end %>
 </ul>
