@@ -1,7 +1,8 @@
 Wiredmind::Application.routes.draw do
-  get "canvas/index"
+#  get "canvas/index"
 
-  get "canvas/show"
+#  get "canvas/show"
+  resources :canvas, {only:  [:index, :show]}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

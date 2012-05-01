@@ -4,5 +4,6 @@ class CanvasController < ApplicationController
   end
 
   def show
+    @canvas = Canvas.find(params[:id])
   end
 end

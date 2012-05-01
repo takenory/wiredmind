@@ -19,8 +19,16 @@ describe CanvasController do
   end
 
   describe "GET 'show'" do
+    before do
+      @canvas = Canvas.create(name: 'canvas')
+      #get canvas_show_path(@canvas)
+      get 'show', {id: @canvas.id}
+    end
+    it "assigns canvas spacified request params[:id]" do
+      assigns[:canvas].should be_instance_of Canvas
+      assigns[:canvas].id.should == @canvas.id
+    end
     it "returns http success" do
-      get 'show'
       response.should be_success
     end
   end
