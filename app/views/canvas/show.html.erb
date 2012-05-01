@@ -1,2 +1,4 @@
-<h1>Canvas#show</h1>
-<p>Find me in app/views/canvas/show.html.erb</p>
+<h1><%= @canvas.name %></h1>
+<% @canvas.minds.each do |mind| %>
+  <div class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px"><%= mind.name %></div>
+<% end %>
