@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function() {
+  $("div.mind").draggable();
+  $("div.mind").droppable({
+    drop: function( event, ui) {
+      alert('aho!');
+    }
+  });
+});
