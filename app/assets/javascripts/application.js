@@ -15,9 +15,16 @@
 //= require_tree .
 $(function() {
   $("div.mind").draggable();
-  $("div.mind").droppable({
-    drop: function( event, ui) {
-      alert('aho!');
+  $("div.mind").draggable({
+    stop: function( ev, ui) {
+      var id = ui.helper.attr("id").split('_')[1];
+      var top = ui.position.top;
+      var left = ui.position.left;
+      $.ajax({
+        type: "POST",
+        url: "/minds/" + id + "/move",
+        data: "top=" + top + "&left=" + left
+      });
     }
   });
 });

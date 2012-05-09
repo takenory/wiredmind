@@ -1,4 +1,4 @@
 <h1><%= @canvas.name %></h1>
 <% @canvas.minds.each do |mind| %>
-  <div class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px"><span><%= mind.name %></span></div>
+  <div id="mind_<%= mind.id %>" class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px"><span><%= mind.name %></span></div>
 <% end %>

@@ -20,4 +20,18 @@ describe Mind do
       end
     end
   end
+  describe 'Mind#move(top:integer, left:integer)' do
+    before do
+      @mind = Mind.create(name: "test_mind")
+      @top, @left = 111, 222
+    end
+    it { @mind.move(@top, @left).should == true }
+    it { @mind.move(@top, nil).should == false }
+    it { @mind.move(nil, @left).should == false }
+    it "minds.top, minds.left colum value change spacified value" do
+      @mind.move(@top, @left)
+      @mind.top.should == @top
+      @mind.left.should == @left
+    end
+  end
 end
