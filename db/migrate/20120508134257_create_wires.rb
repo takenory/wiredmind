@@ -1,6 +1,6 @@
-class CreateMindConnections < ActiveRecord::Migration
+class CreateWires < ActiveRecord::Migration
   def change
-    create_table :mind_connections do |t|
+    create_table :wires do |t|
       t.integer :base_mind_id
       t.integer :target_mind_id
       t.integer :cpx
