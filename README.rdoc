@@ -2,3 +2,12 @@
 wiredmind is the simple Web application which can look down at the network of thinking.
 == Demo
 http://wiredmind.heroku.com
+== TODO
+* adding Mind to Canvas.
+* adding Canvas
+* deleting Canvas
+* showing connection of Minds
+* adding connection of Minds
+* changing color of Mind
+* changing size of Mind
+* changing shape of Mind
