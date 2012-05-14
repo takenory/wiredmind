@@ -3,11 +3,12 @@ wiredmind is the simple Web application which can look down at the network of th
 == Demo
 http://wiredmind.heroku.com
 == TODO
-* adding Mind to Canvas.
+* adding Mind
+* deleting Mind
 * adding Canvas
 * deleting Canvas
-* showing connection of Minds
-* adding connection of Minds
 * changing color of Mind
 * changing size of Mind
 * changing shape of Mind
+* showing the wire which connects Minds
+* drowing wire and connecting Minds
