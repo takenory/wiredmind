@@ -1,7 +1,11 @@
 Wiredmind::Application.routes.draw do
   get "mind/move"
 
-  resources :canvas, {only:  [:index, :show]}
+  resources :canvas, {only:  [:index, :show]} do
+    member do
+      post 'add_mind'
+    end
+  end
   match 'minds/:id/move' => 'minds#move', :as => :move_mind
 
   # The priority is based upon order of creation:

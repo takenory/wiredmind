@@ -32,4 +32,21 @@ describe CanvasController do
       response.should be_success
     end
   end
+
+  describe "POST 'add_mind'" do
+    before do
+      @canvas = Canvas.create(name: 'canvas')
+      @mind_count = @canvas.minds.count
+      xhr :post, 'add_mind', {id: @canvas}
+    end
+    it "returns http success" do
+      response.should be_success
+    end
+    it "Mind added to Canvas" do
+      @canvas.minds.count.should == @mind_count + 1
+    end
+    it "assigns all canvas" do
+      assigns[:mind].should be_instance_of Mind
+    end
+  end
 end

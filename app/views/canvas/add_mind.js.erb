@@ -1,0 +1,3 @@
+$(function(){
+  $("div#canvas").append("<%= escape_javascript( render( partial: 'canvas/mind', locals: {mind: @mind})) %>");
+});

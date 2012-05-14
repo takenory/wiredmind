@@ -18,4 +18,22 @@ describe Canvas do
       end
     end
   end
+  describe 'Canvas.#generate_mind' do
+    before do
+      @canvas = Canvas.create(name: 'canvas')
+      @mind_count = @canvas.minds.count
+      @mind_default_pos_left = 200
+      @mind_default_pos_top = 200
+    end
+    it 'return New Mind Object and spacified default position' do
+      mind = @canvas.generate_mind
+      mind.should be_instance_of(Mind)
+      mind.left.should == @mind_default_pos_left
+      mind.top.should == @mind_default_pos_top
+    end
+    it 'create New Mind Record' do
+      @canvas.generate_mind
+      @canvas.minds.count.should == @mind_count + 1
+    end 
+  end
 end

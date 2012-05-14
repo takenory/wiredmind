@@ -1,4 +1,7 @@
 <h1><%= @canvas.name %></h1>
+<%= button_to 'ADD MIND', add_mind_canva_path(@canvas), remote: true %>
+<div id="canvas">
 <% @canvas.minds.each do |mind| %>
-  <div id="mind_<%= mind.id %>" class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px"><span><%= mind.name %></span></div>
+  <%= render 'mind', mind: mind %>
 <% end %>
+</div>
