@@ -15,8 +15,20 @@
 //= require_tree .
 $(function() {
   $("div.mind").live("mouseover", function() {
+    $("div.mind").resizable({
+      stop: function(ev, ui) {
+        var id = ui.helper.attr("id").split('_')[1];
+        var width = ui.size.width;
+        var height = ui.size.height;
+        $.ajax({
+          type: "POST",
+          url: "/minds/" + id + "/resize",
+          data: "width=" + width + "&height=" + height 
+        });
+      }
+    });
     $("div.mind").draggable({
-      stop: function( ev, ui) {
+      stop: function(ev, ui) {
         var id = ui.helper.attr("id").split('_')[1];
         var top = ui.position.top;
         var left = ui.position.left;

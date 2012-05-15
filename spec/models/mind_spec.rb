@@ -34,4 +34,18 @@ describe Mind do
       @mind.left.should == @left
     end
   end
+  describe 'Mind#resize(width:integer, height:integer)' do
+    before do
+      @mind = Mind.create(name: "test_mind")
+      @width, @height = 111, 222
+    end
+    it { @mind.resize(@width, @height).should == true }
+    it { @mind.resize(@width, nil).should == false }
+    it { @mind.resize(nil, @height).should == false }
+    it "minds.width, minds.height colum value change spacified value" do
+      @mind.resize(@width, @height)
+      @mind.width.should == @width
+      @mind.height.should == @height
+    end
+  end
 end

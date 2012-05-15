@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MindsController do
 
-  describe "GET 'move'" do
+  describe "POST 'move'" do
     before do
       @mind = Mind.create
       @top = 111
@@ -16,6 +16,23 @@ describe MindsController do
       mind = Mind.find(@mind.id)
       mind.top.should == @top
       mind.left.should == @left
+    end
+  end
+
+  describe "POST 'resize'" do
+    before do
+      @mind = Mind.create
+      @width = 111
+      @height = 222
+      xhr :post, 'resize', {:id => @mind.id, :width => @width, :height => @height}
+    end
+    it "returns http success" do
+      response.should be_success
+    end
+    it "mind.width and mind.height should be spacified value" do
+      mind = Mind.find(@mind.id)
+      mind.width.should == @width
+      mind.height.should == @height
     end
   end
 

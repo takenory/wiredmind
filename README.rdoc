@@ -6,7 +6,6 @@ http://wiredmind.heroku.com
 * adding Canvas
 * deleting Canvas
 * changing color of Mind
-* changing size of Mind
 * changing shape of Mind
 * showing the wire which connects Minds
 * drowing wire and connecting Minds
