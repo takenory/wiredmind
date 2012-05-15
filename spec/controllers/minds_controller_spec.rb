@@ -19,4 +19,27 @@ describe MindsController do
     end
   end
 
+  describe "DESTROY" do
+    context "mind record exist" do
+      before do
+        @mind_id = Mind.create.id
+        xhr :post, 'destroy', {:method => 'delete', :id => @mind_id, :top => @top, :left => @left}
+      end
+      it { response.should be_success }
+      it "mind record should be deleted" do
+        Mind.find_by_id(@mind_id).should be_nil
+      end
+      it { assigns[:mind_id].should == @mind_id }
+      it { response.should render_template("minds/destroy") }
+    end
+    context "mind record does not exist" do
+      before do
+        @mind_id = 1
+        Mind.delete_all(id: @mind_id)
+        xhr :post, 'destroy', {:method => 'delete', :id => @mind_id, :top => @top, :left => @left}
+      end
+      it { response.should be_success }
+      it { response.should render_template(nil) }
+    end
+  end
 end

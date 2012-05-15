@@ -3,5 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.mind {
   padding: 8px;
-  background-color: #ccc;
+  background-color: #9b6;
+  border-radius: 10px;          /* CSS3草案 */  
+  -webkit-border-radius: 10px;  /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;     /* Firefox用 */  
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  -webkit-box-shadow: 3px 3px 3px #999;
+  -moz-box-shadow: 3px 3px 3px #999;
+
+  span.mind_name {
+    float: left;
+  }
+
+  span.delete_button {
+    float: right; 
+  }
 }

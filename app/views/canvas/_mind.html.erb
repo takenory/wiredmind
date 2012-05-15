@@ -1,2 +1,9 @@
-<div id="mind_<%= mind.id %>" class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px"><span><%= mind.name %></span></div>
+<div id="mind_<%= mind.id %>" class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px">
+<span class="mind_name">
+  <%= mind.name %>
+</span>
+<span class="delete_button">
+  <%= button_to 'X', destroy_mind_path(mind), {method: 'delete''''''', remote: true} %>
+</span>
+</div>
 

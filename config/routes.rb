@@ -7,6 +7,7 @@ Wiredmind::Application.routes.draw do
     end
   end
   match 'minds/:id/move' => 'minds#move', :as => :move_mind
+  match 'minds/:id/destroy' => 'minds#destroy', :as => :destroy_mind
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
