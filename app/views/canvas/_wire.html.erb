@@ -1,0 +1,17 @@
+<% if mind.wires.count > 0 %>
+  <script type="text/javascript">
+  $(function(){
+    var source_id = "mind_<%= mind.id %>";
+    var target_id = "mind_<%= mind.wires.first.target_mind.id %>";
+    jsPlumb.connect({source: source_id, 
+                     target: target_id,
+                     connector:[ "Bezier", { curviness: 80 } ],
+                     anchor:["RightMiddle", "LeftMiddle",  "BottomCenter", "TopCenter", "AutoDefault"],  
+                     paintStyle:{strokeStyle:"#666", lineWidth:2}, 
+                     endpoint:['Dot',{radius:3}]
+                     });
+    jsPlumb.draggable(source_id);
+    jsPlumb.draggable(target_id);
+  });
+  </script>
+<% end %>

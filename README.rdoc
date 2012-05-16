@@ -8,5 +8,4 @@ http://wiredmind.heroku.com
 * deleting Canvas
 * changing color of Mind
 * changing shape of Mind
-* showing the wire which connects Minds
 * drowing wire and connecting Minds
