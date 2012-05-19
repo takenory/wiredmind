@@ -16,10 +16,10 @@ positions = [{top: 100, left: 100},
              {top: 300, left: 300}]
 canvas.each_with_index do |canvas, i|
   positions.each_with_index do |position, j|
-    base_mind = Mind.create(name: "mind_#{i}_#{j}",
+    base_mind = Mind.create(name: "s_mind_#{i}_#{j}",
                             top: position[:top],
                             left: position[:left])
-    target_mind = Mind.create(name: "mind_#{i}_#{j}",
+    target_mind = Mind.create(name: "t_mind_#{i}_#{j}",
                               top: position[:top] + 50,
                               left: position[:left] + 120)
     canvas.minds << base_mind

@@ -48,4 +48,29 @@ describe Mind do
       @mind.height.should == @height
     end
   end
+  describe 'Mind#connect(Mind Instance)' do
+    before do
+      @source_mind = Mind.create(name: "source_mind")
+      @target_mind = Mind.create(name: "target_mind")
+      Wire.where(base_mind_id: @source_mind.id, 
+                 target_mind_id: @target_mind.id).destroy_all
+    end
+    it "create record on 'wires' table" do
+      @source_mind.connect(@target_mind)
+      Wire.where(base_mind_id: @source_mind.id, 
+                 target_mind_id: @target_mind.id).count.should == 1
+    end
+  end
+  describe 'Mind#disconnect(Mind Instance)' do
+    before do
+      @source_mind = Mind.create(name: "source_mind")
+      @target_mind = Mind.create(name: "target_mind")
+      @source_mind.connect(@target_mind)
+    end
+    it "delete record on 'wires' table" do
+      @source_mind.disconnect(@target_mind) 
+      Wire.where(base_mind_id: @source_mind.id, 
+                 target_mind_id: @target_mind.id).count.should == 0
+    end
+  end
 end

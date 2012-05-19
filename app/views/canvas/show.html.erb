@@ -4,6 +4,7 @@
 <div id="canvas">
 <% @canvas.minds.each do |mind| %>
   <%= render 'mind', mind: mind %>
-  <%= render 'wire', mind: mind %>
+  <%= render 'connect_mind', mind: mind %>
 <% end %>
+<%= render 'wire' %>
 </div>

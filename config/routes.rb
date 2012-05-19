@@ -9,6 +9,8 @@ Wiredmind::Application.routes.draw do
   match 'minds/:id/move' => 'minds#move', :as => :move_mind
   match 'minds/:id/resize' => 'minds#resize', :as => :resize_mind
   match 'minds/:id/destroy' => 'minds#destroy', :as => :destroy_mind
+  match 'minds/:id/connect/:target_id' => 'minds#connect', :as => :connect_mind
+  match 'minds/:id/disconnect/:target_id' => 'minds#disconnect', :as => :disconnect_mind
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

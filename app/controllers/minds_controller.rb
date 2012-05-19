@@ -4,6 +4,18 @@ class MindsController < ApplicationController
     mind.move(params[:top], params[:left])
   end
 
+  def connect
+    source_mind = Mind.find(params[:id])
+    target_mind = Mind.find(params[:target_id])
+    source_mind.connect target_mind
+  end
+
+  def disconnect
+    source_mind = Mind.find(params[:id])
+    target_mind = Mind.find(params[:target_id])
+    source_mind.disconnect target_mind
+  end
+
   def resize
     mind = Mind.find(params[:id])
     mind.resize(params[:width], params[:height])

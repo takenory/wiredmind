@@ -1,0 +1,25 @@
+<script type="text/javascript">
+jsPlumb.bind('ready',function(){
+  jsPlumb.addEndpoint("mind_<%= mind.id %>", 
+                      {anchor:["Center", "AutoDefault"]},
+                      {isSource:true, isTarget:true,
+                       paintStyle:{ opacity:0.9 },
+                       connectorStyle:{lineWidth:2, strokeStyle:'rgba(8,8,8,8)'}, 
+                       connector:[ "Bezier", { curviness: 80 } ]});
+  <% if mind.wires.count > 0 %>
+    var source_id = "mind_<%= mind.id %>";
+    <% mind.wires.each do |wire| %>
+      var target_id = "mind_<%= wire.target_mind.id %>";
+      jsPlumb.connect({source: source_id, 
+                       target: target_id,
+                       connector:[ "Bezier", { curviness: 80 } ],
+                       anchor:["RightMiddle", "LeftMiddle",  "BottomCenter", "TopCenter", "AutoDefault"],
+                       paintStyle:{strokeStyle:"#666", lineWidth:2}, 
+                       endpoint:['Dot',{radius:3}]
+                       });
+      jsPlumb.draggable(target_id);
+    <% end %>
+    jsPlumb.draggable(source_id);
+  <% end %>
+});
+</script>

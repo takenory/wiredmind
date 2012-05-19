@@ -19,6 +19,34 @@ describe MindsController do
     end
   end
 
+  describe "POST 'connect'" do
+    before do
+      @source_mind = Mind.create
+      @target_mind = Mind.create
+      @source_mind.disconnect(@target_mind)
+      xhr :post, 'connect', {:id => @source_mind.id, :target_id => @target_mind.id}
+    end
+    it { response.should be_success }
+    it "source_mind connected to target_mind" do
+      Wire.where(base_mind_id: @source_mind.id, target_mind_id: @target_mind.id).count.should == 1
+    end
+    it { response.should render_template("minds/connect") }
+  end
+
+  describe "POST 'disconnect'" do
+    before do
+      @source_mind = Mind.create
+      @target_mind = Mind.create
+      @source_mind.connect(@target_mind)
+      xhr :post, 'disconnect', {:id => @source_mind.id, :target_id => @target_mind.id}
+    end
+    it { response.should be_success }
+    it "source_mind does not connected to target_mind" do
+      Wire.where(base_mind_id: @source_mind.id, target_mind_id: @target_mind.id).count.should == 0
+    end
+    it { response.should render_template("minds/disconnect") }
+  end
+
   describe "POST 'resize'" do
     before do
       @mind = Mind.create
