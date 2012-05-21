@@ -1,8 +1,8 @@
+notifications:
+  email:
+    - takenory@gmail.com
 rvm:
   - 1.9.2
 env:
   - DB=postgres
 script: "bundle exec rake db:create db:migrate spec"
-notifications:
-  email:
-    - takenory@gmail.com
