@@ -1,6 +1,8 @@
 notifications:
   email:
     - takenory@gmail.com
+  on_success: always # default: change
+  on_failure: always # default: always
 rvm:
   - 1.9.2
 env:
