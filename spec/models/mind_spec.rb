@@ -4,11 +4,13 @@ describe Mind do
   describe 'associations' do
     before do
       @target_mind_count = 5
+      @target_minds = []
       @base_mind = Mind.create(name: "base_mind")
       @wires = @target_mind_count.times.collect do |i|
         wire = Wire.new
         wire.base_mind_id = @base_mind.id
-        wire.target_mind_id = i 
+        @target_minds << Mind.create
+        wire.target_mind_id = @target_minds.last.id
         wire.save
         wire
       end
@@ -17,6 +19,21 @@ describe Mind do
       @base_mind.wires.should have(@target_mind_count).items
       @base_mind.wires.each do |mc|
         mc.should be_instance_of(Wire)
+      end
+    end
+    it 'Mind#wired_wires should be instance of Array' do
+      @target_minds.each do |mind|
+        mind.wired_wires.should be_instance_of(Array)
+      end
+    end
+    it 'Mind#wires destroied with mind' do
+      @base_mind.destroy
+      Wire.where(base_mind_id: @base_mind.id).count.should == 0
+    end
+    it 'Mind#wired_wires destoied with mind' do
+      @wires.each do |wire|
+        wire.destroy
+        Wire.where(target_mind_id: wire.id).count.should == 0
       end
     end
   end

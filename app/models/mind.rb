@@ -1,6 +1,7 @@
 class Mind < ActiveRecord::Base
   belongs_to :canvas
-  has_many :wires, foreign_key: 'base_mind_id'
+  has_many :wires, foreign_key: 'base_mind_id', dependent: :destroy
+  has_many :wired_wires, foreign_key: 'target_mind_id', class_name: 'Wire', dependent: :destroy
   attr_accessible :description, :name, :top, :left, :width, :height
   def move(top, left)
     return false if top.blank? || left.blank?
