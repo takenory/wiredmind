@@ -52,13 +52,32 @@ describe Mind do
     before do
       @source_mind = Mind.create(name: "source_mind")
       @target_mind = Mind.create(name: "target_mind")
-      Wire.where(base_mind_id: @source_mind.id, 
-                 target_mind_id: @target_mind.id).destroy_all
     end
-    it "create record on 'wires' table" do
-      @source_mind.connect(@target_mind)
-      Wire.where(base_mind_id: @source_mind.id, 
-                 target_mind_id: @target_mind.id).count.should == 1
+    context "minds did not connect" do
+      before do
+        Wire.where(base_mind_id: @source_mind.id, 
+                   target_mind_id: @target_mind.id).destroy_all
+      end
+      it { @source_mind.connect(@target_mind).should == true }
+      it "create record on 'wires' table" do
+        @source_mind.connect(@target_mind)
+        Wire.where(base_mind_id: @source_mind.id, 
+                   target_mind_id: @target_mind.id).count.should == 1
+      end
+    end
+    context "minds has been connected" do
+      before do
+        wire = Wire.new
+        wire.base_mind_id = @source_mind.id
+        wire.target_mind_id = @target_mind.id
+        wire.save
+      end
+      it { @source_mind.connect(@target_mind).should == false }
+      it "create record on 'wires' table" do
+        @source_mind.connect(@target_mind)
+        Wire.where(base_mind_id: @source_mind.id, 
+                   target_mind_id: @target_mind.id).count.should < 2
+      end
     end
   end
   describe 'Mind#disconnect(Mind Instance)' do
@@ -71,6 +90,28 @@ describe Mind do
       @source_mind.disconnect(@target_mind) 
       Wire.where(base_mind_id: @source_mind.id, 
                  target_mind_id: @target_mind.id).count.should == 0
+    end
+  end
+  describe 'Mind#connected?(Mind Instance)' do
+    before do
+      @source_mind = Mind.create(name: "source_mind")
+      @target_mind = Mind.create(name: "target_mind")
+    end
+    context "minds has been connected" do
+      before do
+        wire = Wire.new
+        wire.base_mind_id = @source_mind.id
+        wire.target_mind_id = @target_mind.id
+        wire.save
+      end
+      it { @source_mind.connected?(@target_mind).should == true }
+    end
+    context "minds has not  been connected" do
+      before do
+        Wire.where(base_mind_id: @source_mind.id, 
+                   target_mind_id: @target_mind.id).destroy_all
+      end
+      it { @source_mind.connected?(@target_mind).should == false }
     end
   end
 end

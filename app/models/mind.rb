@@ -11,6 +11,7 @@ class Mind < ActiveRecord::Base
     self.update_attributes(width: width, height: height)
   end
   def connect(target_mind)
+    return false if self.connected?(target_mind)
     wire = Wire.new
     wire.base_mind_id = self.id
     wire.target_mind_id = target_mind.id
@@ -18,5 +19,8 @@ class Mind < ActiveRecord::Base
   end
   def disconnect(target_mind)
     Wire.where(base_mind_id: self.id, target_mind_id: target_mind.id).destroy_all
+  end
+  def connected?(target_mind)
+    Wire.where(base_mind_id: self.id, target_mind_id: target_mind.id).count > 0
   end
 end

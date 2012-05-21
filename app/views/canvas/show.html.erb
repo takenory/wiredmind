@@ -3,8 +3,10 @@
 <%= button_to 'ADD MIND', add_mind_canva_path(@canvas), remote: true %>
 <div id="canvas">
 <% @canvas.minds.each do |mind| %>
-  <%= render 'mind', mind: mind %>
-  <%= render 'connect_mind', mind: mind %>
+  <div id="mind_func_element_<%= mind.id %>">
+    <%= render 'mind', mind: mind %>
+    <%= render 'connect_mind', mind: mind %>
+  </div>
 <% end %>
 <%= render 'wire' %>
 </div>

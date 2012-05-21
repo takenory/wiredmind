@@ -5,9 +5,10 @@ class MindsController < ApplicationController
   end
 
   def connect
-    source_mind = Mind.find(params[:id])
+    @source_mind = Mind.find(params[:id])
     target_mind = Mind.find(params[:target_id])
-    source_mind.connect target_mind
+    connected = @source_mind.connect target_mind
+    render nothing: true unless connected
   end
 
   def disconnect

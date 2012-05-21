@@ -1,0 +1,4 @@
+$(function(){
+  $("div#mind_func_element_<%= @source_mind.id %>").html("<%= escape_javascript( render( :partial => 'canvas/mind', :locals => {:mind => @source_mind})) %>").fadeTo("slow", 1);
+  $("div#mind_func_element_<%= @source_mind.id %>").append("<%= escape_javascript( render( :partial => 'canvas/connect_mind', :locals => {:mind => @source_mind})) %>").fadeTo("slow", 1);
+});

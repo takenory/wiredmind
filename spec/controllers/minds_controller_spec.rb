@@ -23,14 +23,28 @@ describe MindsController do
     before do
       @source_mind = Mind.create
       @target_mind = Mind.create
-      @source_mind.disconnect(@target_mind)
-      xhr :post, 'connect', {:id => @source_mind.id, :target_id => @target_mind.id}
     end
-    it { response.should be_success }
-    it "source_mind connected to target_mind" do
-      Wire.where(base_mind_id: @source_mind.id, target_mind_id: @target_mind.id).count.should == 1
+    context "minds did not connect" do
+      before do
+        @source_mind.disconnect(@target_mind)
+        xhr :post, 'connect', {:id => @source_mind.id, :target_id => @target_mind.id}
+      end
+      it { response.should be_success }
+      it "source_mind connected to target_mind" do
+        Wire.where(base_mind_id: @source_mind.id, target_mind_id: @target_mind.id).count.should == 1
+      end
+      it { assigns[:source_mind].should be_instance_of(Mind) }
+      it { assigns[:source_mind].id.should == @source_mind.id }
+      it { response.should render_template("minds/connect") }
     end
-    it { response.should render_template("minds/connect") }
+    context "minds has been connected" do
+      before do
+        @source_mind.connect(@target_mind)
+        xhr :post, 'connect', {:id => @source_mind.id, :target_id => @target_mind.id}
+      end
+      it { response.should be_success }
+      it { response.should render_template(nil) }
+    end
   end
 
   describe "POST 'disconnect'" do
