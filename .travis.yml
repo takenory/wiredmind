@@ -3,3 +3,6 @@ rvm:
 env:
   - DB=postgres
 script: "bundle exec rake db:create db:migrate spec"
+notifications:
+  email:
+    - takenory@gmail.com
