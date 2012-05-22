@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 $(function() {
-  $("div.mind").live("mouseover", function() {
-    $("div.mind").resizable({
+  $("table.mind").live("mouseover", function() {
+    $("table.mind").resizable({
       stop: function(ev, ui) {
         var id = ui.helper.attr("id").split('_')[1];
         var width = ui.size.width;
@@ -27,7 +27,7 @@ $(function() {
         });
       }
     });
-    $("div.mind").draggable({
+    $("table.mind").draggable({
       stop: function(ev, ui) {
         var id = ui.helper.attr("id").split('_')[1];
         var top = ui.position.top;

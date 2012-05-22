@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe MindsController do
 
+  describe "POST 'update'" do
+    before do
+      @mind = Mind.create
+      xhr :post, 'update', {:id => @mind.id, :mind => {name: 'test'}}
+    end
+    it { response.should be_success }
+    it { assigns[:mind].should be_instance_of(Mind) }
+  end
+
   describe "POST 'move'" do
     before do
       @mind = Mind.create

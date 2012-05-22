@@ -1,7 +1,7 @@
 // Place all the styles related to the canvas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div.mind {
+table.mind {
   padding: 8px;
   background-color: #9b6;
   border-radius: 5px;          /* CSS3草案 */  
@@ -19,5 +19,12 @@ div.mind {
 
   span.delete_button {
     float: right; 
+  }
+  div.mind_form {
+    input {
+      background-color: #9b6;
+      font-size: 12pt;
+      border: 0px;
+    }
   }
 }

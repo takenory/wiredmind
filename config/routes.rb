@@ -1,11 +1,10 @@
 Wiredmind::Application.routes.draw do
-  get "mind/move"
-
   resources :canvas, {only:  [:index, :show]} do
     member do
       post 'add_mind'
     end
   end
+  resources :minds, {only: [:edit, :update]}
   match 'minds/:id/move' => 'minds#move', :as => :move_mind
   match 'minds/:id/resize' => 'minds#resize', :as => :resize_mind
   match 'minds/:id/destroy' => 'minds#destroy', :as => :destroy_mind

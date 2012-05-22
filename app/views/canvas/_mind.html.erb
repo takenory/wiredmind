@@ -1,9 +1,16 @@
-<div id="mind_<%= mind.id %>" class="mind" style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px;width:<%= mind.width %>px;height:<%= mind.height %>px">
-<span class="mind_name">
-  <%= mind.name %>
-</span>
-<span class="delete_button">
-  <%= button_to 'X', destroy_mind_path(mind), {method: 'delete''''''', remote: true} %>
-</span>
-</div>
-
+<table id="mind_<%= mind.id %>" class="mind" 
+  style="position:fixed;top:<%= mind.top %>px;left:<%= mind.left %>px;
+         width:<%= mind.width %>px;height:<%= mind.height %>px">
+  <tr><td>
+  <span id="mind_name_<%= mind.id %>" class="mind_name">
+    <div id="mind_form_<% mind.id %>" class="mind_form">
+      <%= form_for mind, {remote: true} do |f| %>
+        <%= f.text_field 'name', {size: mind.name.size * 1.2} %>
+      <% end %>
+    </div>
+  </span>
+  <span class="delete_button">
+    <%= button_to 'X', destroy_mind_path(mind), {method: 'delete', remote: true} %>
+  </span>
+  </td></tr>
+</table>

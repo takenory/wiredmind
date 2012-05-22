@@ -1,4 +1,8 @@
 class MindsController < ApplicationController
+  def update
+    @mind = Mind.find(params[:id])
+    @mind.update_attributes(params[:mind])
+  end
   def move
     mind = Mind.find(params[:id])
     mind.move(params[:top], params[:left])

@@ -3,7 +3,6 @@ wiredmind is the simple Web application which can look down at the network of th
 == Demo
 http://wiredmind.heroku.com
 == TODO
-* editting Mind (name & description)
 * adding Canvas
 * deleting Canvas
 * changing color of Mind

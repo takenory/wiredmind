@@ -31,9 +31,9 @@ describe Mind do
       Wire.where(base_mind_id: @base_mind.id).count.should == 0
     end
     it 'Mind#wired_wires destoied with mind' do
-      @wires.each do |wire|
-        wire.destroy
-        Wire.where(target_mind_id: wire.id).count.should == 0
+      @target_minds.each do |target_mind|
+        target_mind.destroy
+        Wire.where(target_mind_id: target_mind.id).count.should == 0
       end
     end
   end
