@@ -5,7 +5,7 @@ jsPlumb.bind('ready',function(){
                       {anchor:["RightMiddle"]},
                       {isSource:true, isTarget:true,
                        endpoint:["Dot", { radius:10 }],
-                       paintStyle:{ fillStyle:"#aaa", opacity:1.0 },
+                       paintStyle:{ fillStyle:"#aaa", opacity:0.5 },
                        reattach:true,
                        connectorStyle:{lineWidth:2, strokeStyle:'#999'},
                        connector: ["Bezier", { curviness: 80 } ],
@@ -19,8 +19,8 @@ jsPlumb.bind('ready',function(){
                        target: target_id,
                        connector:[ "Bezier", { curviness: 80 } ],
                        anchor:["RightMiddle", "BottomRight", "BottomCenter", "BottomLeft", "LeftMiddle", "TopLeft", "TopCenter", "TopRight", "AutoDefault"],
-                       paintStyle:{strokeStyle:"#696", lineWidth:2}, 
-                       endpoint:['Blank',{radius:5}],
+                       paintStyle:{strokeStyle:"#696", lineWidth:2, opacity:0.5}, 
+                       endpoint:['Dot',{radius:5}],
                        overlays:[["PlainArrow", {location:1, width:10, length:15}], [ "Label", { label:"<%= wire.caption || "" %>", location:0.5}]]
                        });
       jsPlumb.draggable(target_id);
