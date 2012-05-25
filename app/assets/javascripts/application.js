@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 $(function() {
+  $("div#core").hide();
+  $("div#core").fadeIn();
   $("table.mind").live("mouseover", function() {
     $("table.mind").resizable({
       stop: function(ev, ui) {

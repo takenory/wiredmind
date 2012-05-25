@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
 */
+a {
+  text-decoration: none;
+  font-size: 12px;
+  color: #fff;
+  padding: 4px;
+  background-color: #666;
+  border-radius: 8px;          /* CSS3草案 */
+  -webkit-border-radius: 8px;  /* Safari,Google Chrome用 */
+  -moz-border-radius: 8px;     /* Firefox用 */
+}
+a:hover {
+  color: #f90;
+  background-color: #555;
+}

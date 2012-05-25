@@ -1,5 +1,8 @@
-<ul id="canvas_list">
+<div id="canvas_list">
   <% @canvas.each do |canvas| %>
-    <li><%= link_to canvas.name, canvas %></li>
+    <div class="canvas">
+      <div class="name"><%= canvas.name %></div>
+      <%= link_to ">>", canvas %>
+    </div>
   <% end %>
-</ul>
+</div>

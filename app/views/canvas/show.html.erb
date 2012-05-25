@@ -1,12 +1,14 @@
-<%= link_to '<< canvas list', root_path %>
-<h1><%= @canvas.name %></h1>
-<%= button_to 'ADD MIND', add_mind_canva_path(@canvas), remote: true %>
+<div id="canvas_menu">
+  <div><%= link_to '<<', root_path %></div>
+  <div id="canvas_name"><%= @canvas.name %></div>
+  <div><%= link_to '+ mind', add_mind_canva_path(@canvas), {method: 'post', remote: true} %></div>
+</div>
 <div id="canvas">
-<% @canvas.minds.each do |mind| %>
-  <div id="mind_func_element_<%= mind.id %>">
-    <%= render 'mind', mind: mind %>
-    <%= render 'connect_mind', mind: mind %>
-  </div>
-<% end %>
-<%= render 'wire' %>
+  <% @canvas.minds.each do |mind| %>
+    <div id="mind_func_element_<%= mind.id %>">
+      <%= render 'mind', mind: mind %>
+      <%= render 'connect_mind', mind: mind %>
+    </div>
+  <% end %>
+  <%= render 'wire' %>
 </div>
