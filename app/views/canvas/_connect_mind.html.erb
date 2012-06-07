@@ -18,7 +18,7 @@ jsPlumb.bind('ready',function(){
       jsPlumb.connect({source: source_id, 
                        target: target_id,
                        connector:[ "Bezier", { curviness: 80 } ],
-                       anchor:["RightMiddle", "BottomRight", "BottomCenter", "BottomLeft", "LeftMiddle", "TopLeft", "TopCenter", "TopRight", "AutoDefault"],
+                       anchor:["RightMiddle", "LeftMiddle", "TopCenter", "BottomCenter", "AutoDefault"],
                        paintStyle:{strokeStyle:"#696", lineWidth:2, opacity:0.5}, 
                        endpoint:['Dot',{radius:5}],
                        overlays:[["PlainArrow", {location:1, width:10, length:15}], [ "Label", { label:"<%= wire.caption || "" %>", location:0.5}]]
